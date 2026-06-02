@@ -60,9 +60,9 @@ public class stepsDefinition extends Base {
     }
 
     @And("i click admin panel")
-    public void i_click_admin_panel() throws InterruptedException {
-        driver.findElement(By.xpath("//button[.//span[contains(text(),'Admin')]]")).click();
-        Thread.sleep(3000);
+    public void i_click_admin_panel()  {
+    dashboardPage.clickAdminPanel();
+
     }
 
     @Then("i should be redirected to admin dashboard")
