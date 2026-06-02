@@ -48,16 +48,15 @@ public class stepsDefinition extends Base {
     }
 
     @Then("i should be logged in successfully as admin")
-    public void i_should_be_logged_in_successfully_as_admin() throws InterruptedException {
-        assert driver.findElement(By.id("app-main-content")).isDisplayed();
-        Thread.sleep(3000);
+    public void i_should_be_logged_in_successfully_as_admin() {
+    dashboardPage.verifyUserIsLoggedInSuccessfully();
 
     }
 
     @When("i click on the profile button")
-    public void i_click_on_the_profile_button() throws InterruptedException {
-        driver.findElement(By.xpath("//button[contains(@class,'user-pill')]")).click();
-        Thread.sleep(3000);
+    public void i_click_on_the_profile_button() {
+    dashboardPage.clickProfileButton();
+
     }
 
     @And("i click admin panel")

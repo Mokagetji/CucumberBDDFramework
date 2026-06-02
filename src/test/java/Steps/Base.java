@@ -1,5 +1,6 @@
 package Steps;
 
+import Pages.DashboardPage;
 import Pages.HomePage;
 import Pages.LoginPage;
 import Utils.BrowserFactory;
@@ -18,4 +19,5 @@ public class Base {
 
     HomePage homePage = PageFactory.initElements(driver, HomePage.class);
     LoginPage loginPage = PageFactory.initElements(driver, LoginPage.class);
+    DashboardPage dashboardPage = PageFactory.initElements(driver, DashboardPage.class);
 }
