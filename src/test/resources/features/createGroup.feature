@@ -8,7 +8,7 @@ Feature: groupCreation
     And i enter admin password <password>
     When i click login submit button
     Then i should be logged in successfully as admin
-    When i click on the profile button
+    When i click on the menu button
     And i click admin panel
     Then i should be redirected to admin dashboard
     When i click groups

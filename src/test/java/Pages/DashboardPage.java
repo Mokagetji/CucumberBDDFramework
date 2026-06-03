@@ -17,7 +17,7 @@ public class DashboardPage {
     WebElement dashboardPage_id;
 
     @FindBy(xpath = "//button[contains(@class,'user-pill')]")
-    WebElement profileButton_xpath;
+    WebElement menuButton_xpath;
 
     @FindBy(xpath = "//button[.//span[contains(text(),'Admin')]]")
     WebElement adminPanel_xpath;
@@ -31,9 +31,9 @@ public class DashboardPage {
         dashboardPage_id.isDisplayed();
     }
 
-    public void clickProfileButton(){
-        new WebDriverWait(driver,Duration.ofSeconds(15)).until(visibilityOf(profileButton_xpath));
-        profileButton_xpath.click();
+    public void clickMenuButton(){
+        new WebDriverWait(driver,Duration.ofSeconds(15)).until(visibilityOf(menuButton_xpath));
+        menuButton_xpath.click();
     }
 
     public void clickAdminPanel(){

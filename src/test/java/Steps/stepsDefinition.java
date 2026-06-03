@@ -1,6 +1,5 @@
 package Steps;
 
-import io.cucumber.java.After;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -53,9 +52,9 @@ public class stepsDefinition extends Base {
 
     }
 
-    @When("i click on the profile button")
-    public void i_click_on_the_profile_button() {
-    dashboardPage.clickProfileButton();
+    @When("i click on the menu button")
+    public void i_click_on_the_menu_button() {
+    dashboardPage.clickMenuButton();
 
     }
 
