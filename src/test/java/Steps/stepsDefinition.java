@@ -11,74 +11,74 @@ public class stepsDefinition extends Base {
 
     @Given("i am ndosi automation homepage")
     public void i_am_ndosi_automation_homepage() {
-    homePage.verifyUserIsOnHomePage();
+        homePage.verifyUserIsOnHomePage();
 
     }
 
     @And("i click login button")
     public void i_click_login_button() {
-    homePage.clickLoginButton();
+        homePage.clickLoginButton();
 
     }
 
     @When("i am on the login page")
     public void i_am_on_the_login_page() {
-   loginPage.verifyLoginPage();
+        loginPage.verifyLoginPage();
 
     }
 
     @And("i enter admin email (.*)$")
     public void i_enter_admin_email(String email) {
-    loginPage.enterEmail(email);
+        loginPage.enterEmail(email);
 
     }
 
     @And("i enter admin password (.*)$")
     public void i_enter_admin_password(String password) {
-    loginPage.enterPassword(password);
+        loginPage.enterPassword(password);
 
     }
 
     @And("i click login submit button")
     public void i_click_login_submit_button() {
-    loginPage.clickLoginSubmitButton();
+        loginPage.clickLoginSubmitButton();
 
 
     }
 
     @Then("i should be logged in successfully as admin")
     public void i_should_be_logged_in_successfully_as_admin() {
-    dashboardPage.verifyUserIsLoggedInSuccessfully();
+        dashboardPage.verifyUserIsLoggedInSuccessfully();
 
     }
 
     @When("i click on the menu button")
     public void i_click_on_the_menu_button() {
-    dashboardPage.clickMenuButton();
+        dashboardPage.clickMenuButton();
 
     }
 
     @And("i click admin panel")
     public void i_click_admin_panel()  {
-    dashboardPage.clickAdminPanel();
+        dashboardPage.clickAdminPanel();
 
     }
 
     @Then("i should be redirected to admin dashboard")
     public void i_should_be_redirected_to_admin_dashboard() {
-        assert driver.findElement(By.xpath("//div[@class='admin-dashboard']")).isDisplayed();
+        adminDashboardPage.verifyAdminDashBoardIsDisplayed();
+
     }
 
     @When("i click groups")
-    public void i_click_groups() throws InterruptedException {
-        driver.findElement(By.xpath("//nav//button[contains(.,'Groups')]")).click();
-        Thread.sleep(3000);
+    public void i_click_groups() {
+        adminDashboardPage.clickGroupsTab();
 
     }
 
     @And("i click create new group button")
     public void i_click_create_new_group_button() {
-        driver.findElement(By.xpath("//button[contains(.,'Create New Group')]")).click();
+        adminDashboardPage.clickCreateNewGroupButton();
 
     }
 
