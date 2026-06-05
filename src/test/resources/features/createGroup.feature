@@ -22,7 +22,7 @@ Feature: groupCreation
     And i click create button
     Then the group should be created
     When i click back to website button
-    And i click on the profile button
+    And i click on the menu button
     And i click logout button
     And i click OK to confirm logout
     Then i should be logged out successfully
