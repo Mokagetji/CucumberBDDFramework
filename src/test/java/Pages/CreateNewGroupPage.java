@@ -49,15 +49,6 @@ public class CreateNewGroupPage {
         new WebDriverWait(driver, Duration.ofSeconds(15)).until(visibilityOf(groupName_xpath));
         groupName_xpath.sendKeys();
     }
-    //screenshot method
-    @AfterStep
-    public void addScreenshots(Scenario scenario){
-        if (scenario.isFailed()){
-            byte [] screenshots = ((TakesScreenshot)driver).getScreenshotAs(OutputType.BYTES);
-            scenario.attach(screenshots,"image/png","image");
 
-        }
-
-    }
 
 }

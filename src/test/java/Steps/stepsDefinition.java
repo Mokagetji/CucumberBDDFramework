@@ -1,11 +1,15 @@
 package Steps;
 
+import io.cucumber.java.AfterStep;
+import io.cucumber.java.Scenario;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 
 public class stepsDefinition extends Base {
 
@@ -190,5 +194,16 @@ public class stepsDefinition extends Base {
     public void the_created_group_should_exist_in_the_group_dropdown(String groupName) throws InterruptedException {
         assert driver.findElement(By.xpath("//option[contains(text(),'" + groupName + "')]")).isDisplayed();
         Thread.sleep(2000);
+    }
+
+    //screenshot method
+    @AfterStep
+    public void addScreenshots(Scenario scenario){
+        if (scenario.isFailed()){
+            byte [] screenshots = ((TakesScreenshot)driver).getScreenshotAs(OutputType.BYTES);
+            scenario.attach(screenshots,"image/png","image");
+
+        }
+
     }
 }

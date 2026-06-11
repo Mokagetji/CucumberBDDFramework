@@ -1,3 +1,4 @@
+@createGroup
 Feature: groupCreation
 
   Scenario Outline: as a user I want to login to ndosi website as admin and create a group
