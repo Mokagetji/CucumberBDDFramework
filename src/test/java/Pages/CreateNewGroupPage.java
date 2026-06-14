@@ -3,9 +3,12 @@ package Pages;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.List;
 
 import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOf;
 
@@ -37,9 +40,24 @@ public class CreateNewGroupPage {
     @FindBy(xpath = "//div[contains(text(),'Group created successfully!')]")
     WebElement groupCreatedMessage_xpath;
 
+    @FindBy(xpath = "//button[contains(text(),'← Back to Website')]")
+    WebElement backToWebsiteButton_xpath;
+
+    @FindBy(xpath = "//button[@class='nav-dropdown-item']//span[contains(text(),'Logout')]")
+    WebElement logoutButton_xpath;
+
+    @FindBy(id = "signup-toggle")
+    WebElement signUpHereHyperLink_id;
+
+    @FindBy(id = "register-group")
+    WebElement selectYourGroupDropdown_id;
+
+
+
     public CreateNewGroupPage(WebDriver driver){
         this.driver = driver;
     }
+
 
     public void enterGroupName(String groupName){
         new WebDriverWait(driver, Duration.ofSeconds(15)).until(visibilityOf(groupName_xpath));
@@ -108,6 +126,44 @@ public class CreateNewGroupPage {
         new WebDriverWait(driver,Duration.ofSeconds(15)).until(visibilityOf(groupCreatedMessage_xpath));
         groupCreatedMessage_xpath.isDisplayed();
     }
+
+    public void clickBackToWebsiteButton(){
+        new WebDriverWait(driver,Duration.ofSeconds(15)).until(visibilityOf(backToWebsiteButton_xpath));
+        backToWebsiteButton_xpath.click();
+    }
+
+    public void clickLogoutButton() {
+        new WebDriverWait(driver, Duration.ofSeconds(15)).until(visibilityOf(logoutButton_xpath));
+        logoutButton_xpath.click();
+
+    }
+
+    public void clickOKToConfirmLogout(){
+        new WebDriverWait(driver,Duration.ofSeconds(15)).until(ExpectedConditions.alertIsPresent());
+        driver.switchTo().alert().accept();
+    }
+
+    public void clickSignUpHereHyperLink(){
+        new WebDriverWait(driver,Duration.ofSeconds(15)).until(visibilityOf(signUpHereHyperLink_id));
+        signUpHereHyperLink_id.click();
+        }
+
+    public boolean isGroupPresentInDropdown(String groupName) {
+
+        Select select = new Select(selectYourGroupDropdown_id);
+
+        for (WebElement option : select.getOptions()) {
+
+            if (option.getText().trim().contains(groupName.trim())) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+
+
 
 
 }

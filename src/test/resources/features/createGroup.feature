@@ -29,13 +29,12 @@ Feature: groupCreation
     Then i should be logged out successfully
     When i click login button
     And i click sign up here hyperlink
-    And i click select your group button
-    Then the created group <groupName> should exist in the group dropdown
+    Then the created group "<groupName>" should exist in the group dropdown
 
 
     Examples:
-      |email            | password  | groupName            | groupDescription     | year | maxCapacity | startDate   | endDate      |
-      |admin@gmail.com  | @12345678 | 2027 Testingmine Class | The best of the best | 2027 | 67          | 2027-08-01  |  2028-12-01  |
+      |email            | password  | groupName | groupDescription     | year | maxCapacity | startDate   | endDate      |
+      |admin@gmail.com  | @12345678 | Class ACT | The best of the best | 2027 | 67          | 2027-08-01  |  2028-12-01  |
 
 
 

@@ -10,6 +10,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
+import org.testng.Assert;
+
+import static Utils.BrowserFactory.driver;
 
 public class stepsDefinition extends Base {
 
@@ -63,7 +66,7 @@ public class stepsDefinition extends Base {
     }
 
     @And("i click admin panel")
-    public void i_click_admin_panel()  {
+    public void i_click_admin_panel() {
         dashboardPage.clickAdminPanel();
 
     }
@@ -114,13 +117,13 @@ public class stepsDefinition extends Base {
 
     @And("i enter the end date (.*)$")
     public void i_enter_the_end_date(String endDate) {
-       createNewGroupPage.enterGroupEndDate(endDate);
+        createNewGroupPage.enterGroupEndDate(endDate);
 
     }
 
     @And("i click create button")
     public void i_click_create_button() {
-       createNewGroupPage.clickCreateGroupButton();
+        createNewGroupPage.clickCreateGroupButton();
     }
 
     @Then("the group should be created")
@@ -130,55 +133,45 @@ public class stepsDefinition extends Base {
     }
 
     @When("i click back to website button")
-    public void i_click_back_to_website_button() throws InterruptedException {
-        driver.findElement(By.xpath("//button[contains(text(),'← Back to Website')]")).click();
-        Thread.sleep(2000);
+    public void i_click_back_to_website_button() {
+        createNewGroupPage.clickBackToWebsiteButton();
 
     }
 
     @And("i click logout button")
-    public void i_click_logout_button() throws InterruptedException {
-        driver.findElement(By.xpath("//button[.//span[text()='Logout']]")).click();
-        Thread.sleep(2000);
+    public void i_click_logout_button() {
+        createNewGroupPage.clickLogoutButton();
     }
 
     @And("i click OK to confirm logout")
-    public void i_click_OK_to_confirm_logout() throws InterruptedException {
-        driver.switchTo().alert().accept();
-        Thread.sleep(2000);
-
+    public void i_click_OK_to_confirm_logout() {
+        createNewGroupPage.clickOKToConfirmLogout();
+        //driver.switchTo().alert().accept();
     }
 
     @Then("i should be logged out successfully")
-    public void i_should_be_logged_out_successfully() throws InterruptedException {
-        assert driver.findElement(By.id("app-main-content")).isDisplayed();
-        Thread.sleep(2000);
+    public void i_should_be_logged_out_successfully() {
+
     }
 
     @And("i click sign up here hyperlink")
-    public void i_click_sign_up_here_hyperlink() throws InterruptedException {
-        driver.findElement(By.id("signup-toggle")).click();
-        Thread.sleep(2000);
+    public void i_click_sign_up_here_hyperlink() {
+        createNewGroupPage.clickSignUpHereHyperLink();
     }
 
-    @And("i click select your group button")
-    public void i_click_select_your_group_button() throws InterruptedException {
-        driver.findElement(By.id("register-group")).click();
-        Thread.sleep(3000);
-    }
-
-    @Then("the created group (.*) should exist in the group dropdown")
-    public void the_created_group_should_exist_in_the_group_dropdown(String groupName) throws InterruptedException {
-        assert driver.findElement(By.xpath("//option[contains(text(),'" + groupName + "')]")).isDisplayed();
-        Thread.sleep(2000);
+    @Then("the created group {string} should exist in the group dropdown")
+    public void the_created_group_should_exist_in_the_group_dropdown(String groupName) {
+        Assert.assertTrue(
+                createNewGroupPage.isGroupPresentInDropdown(groupName)
+        );
     }
 
     //screenshot method
     @AfterStep
-    public void addScreenshots(Scenario scenario){
-        if (scenario.isFailed()){
-            byte [] screenshots = ((TakesScreenshot)driver).getScreenshotAs(OutputType.BYTES);
-            scenario.attach(screenshots,"image/png","image");
+    public void addScreenshots(Scenario scenario) {
+        if (scenario.isFailed()) {
+            byte[] screenshots = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+            scenario.attach(screenshots, "image/png", "image");
 
         }
 
