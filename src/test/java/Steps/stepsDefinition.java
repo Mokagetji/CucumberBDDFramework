@@ -88,68 +88,45 @@ public class stepsDefinition extends Base {
 
     @And("i enter the group name (.*)$")
     public void i_enter_the_group_name(String groupName) {
-        driver.findElement(By.xpath("//input[@name='name']")).sendKeys(groupName);
+        createNewGroupPage.enterGroupName(groupName);
     }
 
     @And("i enter the group description (.*)$")
     public void i_enter_the_group_description(String groupDescription) {
-        driver.findElement(By.xpath("//textarea[@name='description']")).sendKeys(groupDescription);
+        createNewGroupPage.enterGroupDescription(groupDescription);
     }
 
     @And("i enter the year (.*)$")
     public void i_enter_the_year(String year) {
-        driver.findElement(By.name("year")).clear();
-        driver.findElement(By.name("year")).sendKeys(year);
+        createNewGroupPage.enterGroupYear(year);
     }
 
     @And("i enter the max capacity (.*)$")
     public void i_enter_the_max_capacity(String maxCapacity) {
-        driver.findElement(By.xpath("//input[@name='maxCapacity']")).sendKeys(maxCapacity);
+        createNewGroupPage.enterGroupMaximumCapacity(maxCapacity);
 
     }
 
     @And("i enter the start date (.*)$")
     public void i_enter_the_start_date(String startDate) {
-        String[] parts = startDate.split("/");
-
-        driver.findElement(By.name("startDate")).click();
-
-        driver.findElement(By.name("startDate"))
-                .sendKeys(
-                        parts[0],
-                        Keys.ARROW_RIGHT,
-                        parts[1],
-                        Keys.ARROW_RIGHT,
-                        parts[2]
-                );
+        createNewGroupPage.enterGroupStartDate(startDate);
     }
 
     @And("i enter the end date (.*)$")
     public void i_enter_the_end_date(String endDate) {
-        String[] parts = endDate.split("/");
-
-        driver.findElement(By.name("endDate")).click();
-
-        driver.findElement(By.name("endDate"))
-                .sendKeys(
-                        parts[0],
-                        Keys.ARROW_RIGHT,
-                        parts[1],
-                        Keys.ARROW_RIGHT,
-                        parts[2]
-                );
+       createNewGroupPage.enterGroupEndDate(endDate);
 
     }
 
     @And("i click create button")
     public void i_click_create_button() {
-        driver.findElement(By.xpath("//button[contains(.,'Create Group')]")).click();
+       createNewGroupPage.clickCreateGroupButton();
     }
 
     @Then("the group should be created")
-    public void the_group_should_be_created() throws InterruptedException {
-        assert driver.findElement(By.xpath("//div[contains(text(),'Group created successfully!')]")).isDisplayed();
-        Thread.sleep(2000);
+    public void the_group_should_be_created() {
+        createNewGroupPage.verifyGroupCreatedMessageIsDisplayed();
+
     }
 
     @When("i click back to website button")
