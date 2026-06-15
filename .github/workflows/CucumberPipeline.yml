@@ -1,11 +1,27 @@
 #name of our pipeline
 name: Cucumber Pipeline
 
-#trigger pipeline when someone push to the main branch and when someone pull from the main branch
+#trigger pipeline when someone push to the main branch and when someone do a pull request from the main branch
 on:
   push:
     branches: [ main ]
   pull_request:
     branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+            java-version: '21'
+            distribution: 'temurin'
+            cache: maven
+
 
 
