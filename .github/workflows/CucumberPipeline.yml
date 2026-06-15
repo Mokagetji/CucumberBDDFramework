@@ -1,0 +1,11 @@
+#name of our pipeline
+name: Cucumber Pipeline
+
+#trigger pipeline when someone push to the main branch and when someone pull from the main branch
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+
