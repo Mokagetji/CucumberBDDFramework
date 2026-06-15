@@ -1,5 +1,6 @@
 package Utils;
 
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -17,7 +18,7 @@ public class BrowserFactory {
 
 
         if (browserChoice.equalsIgnoreCase("edge")) {
-            //edgeOptions.addArguments("--headless"); the pipeline should always run in a headless mode
+            edgeOptions.addArguments("--headless"); //the pipeline should always run in a headless mode
             driver = new EdgeDriver(edgeOptions);
         }
         else if (browserChoice.equalsIgnoreCase("chrome")) {
@@ -30,7 +31,7 @@ public class BrowserFactory {
         else {
             driver = new InternetExplorerDriver();
         }
-        driver.manage().window().maximize();
+        driver.manage().window().setSize(new Dimension(1920,1080));
         driver.get(url);
         return driver;
     }
