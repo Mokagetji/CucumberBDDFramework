@@ -30,19 +30,7 @@ jobs:
 
 #running the tests in the pipeline
       - name: Build and Run Tests
-        run: mvn clean test -Dheadless=true -X
-
-      - name: Show test results
-        if: always()
-        run: |
-           find target -type f
-
-#debugging - see what files/folders were actually created
-      - name: Debug report output
-        if: always()
-        run: |
-          echo "Listing all files:"
-          ls -R
+        run: mvn clean test -Dheadless=true
 
 #uploading report to the pipeline
       - name: Upload Cucumber Report
