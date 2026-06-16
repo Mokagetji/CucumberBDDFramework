@@ -12,5 +12,5 @@ import io.cucumber.testng.CucumberOptions;
         publish = true //Optional - it's purpose is to publish the report
 )
 
-public class runner extends AbstractTestNGCucumberTests {
+public class RunnerTest extends AbstractTestNGCucumberTests {
 }
