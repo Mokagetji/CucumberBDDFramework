@@ -32,7 +32,13 @@ jobs:
       - name: Build and Run Tests
         run: mvn clean test -Dheadless=true
 
-
+#uploading report to the pipeline
+      - name: Upload Cucumber Report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cucumber-report
+          path: target/cucumber-report.html
 
 
 
