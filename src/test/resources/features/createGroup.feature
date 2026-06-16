@@ -34,7 +34,7 @@ Feature: groupCreation
 
     Examples:
       |email            | password  | groupName | groupDescription     | year | maxCapacity | startDate   | endDate      |
-      |admin@gmail.com  | @12345678 | Class ACT68 | The best of the best | 2027 | 67          | 2027-08-01  |  2028-12-01  |
+      |admin@gmail.com  | @12345678 | Class ACT678 | The best of the best | 2027 | 67          | 2027-08-01  |  2028-12-01  |
 
 
 
