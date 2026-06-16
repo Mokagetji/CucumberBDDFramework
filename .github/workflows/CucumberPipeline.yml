@@ -30,7 +30,12 @@ jobs:
 
 #running the tests in the pipeline
       - name: Build and Run Tests
-        run: mvn clean test -Dheadless=true
+        run: mvn clean test -Dheadless=true -X
+
+      - name: Show test results
+        if: always()
+        run: |
+           find target -type f
 
 #debugging - see what files/folders were actually created
       - name: Debug report output
