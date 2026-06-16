@@ -19,6 +19,7 @@ public class BrowserFactory {
 
         if (browserChoice.equalsIgnoreCase("edge")) {
             edgeOptions.addArguments("--headless"); //the pipeline should always run in a headless mode
+            edgeOptions.addArguments("--window-size=1920,1080");
             driver = new EdgeDriver(edgeOptions);
         }
         else if (browserChoice.equalsIgnoreCase("chrome")) {
