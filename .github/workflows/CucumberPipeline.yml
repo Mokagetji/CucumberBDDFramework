@@ -58,7 +58,7 @@ jobs:
 
 
           to: florinah.langa@gmail.com
-          from: ${{ secrets.MAIL_USERNAME }
+          from: ${{ secrets.MAIL_USERNAME }}
 
 
           body: |
