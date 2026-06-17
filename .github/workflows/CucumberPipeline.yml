@@ -40,5 +40,47 @@ jobs:
           name: GroupCreation-report
           path: test-output/
 
+#sending an email with the report
+      - name: Send Email Report
+        if: always()
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          secure: true
+
+
+          username: ${{ secrets.MAIL_USERNAME }}
+          password: ${{ secrets.MAIL_PASSWORD }}
+
+
+          subject: Cucumber Automation Test Report
+
+
+          to: florinah.langa@gmail.com
+          from: ${{ secrets.MAIL_USERNAME }
+
+
+          body: |
+            Hi Team,
+            
+            
+            Please find attached the latest Automation Report.
+            
+            
+            Execution completed successfully.
+            
+            
+            Regards,
+            Mokgaetji
+            
+
+          attachments: test-output/
+
+
+
+
+          
+          
 
 
